@@ -1,0 +1,51 @@
+@media screen and (max-width: 600px) {
+  .nav-container .nav-tagline,
+  .navbar .elements {
+    display: none;
+  }
+  .navbar {
+    grid-template-columns: 100%;
+    flex-direction: column;
+    text-align: center;
+    margin-right: 0 auto;
+  }
+  .navbar .learnDesign {
+    margin-top: 2vh;
+    height: 4vh;
+  }
+  .Headline h1 {
+    font-size: 2rem;
+  }
+  .Headline {
+    padding: 2rem;
+    margin-bottom: 3vh;
+  }
+  .Headline .socialProfiles {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Headline .socialProfiles li {
+    margin: 0.5vh 0;
+  }
+  .mainSec {
+    grid-template-columns: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .mainSec .inputForm {
+    width: 90%;
+    margin: 2vh auto;
+    margin-bottom: 5vh;
+  }
+  .mainSec .inputForm button {
+    width: auto;
+  }
+  .Reviews {
+    grid-template-columns: 90%;
+    margin: 0 auto;
+    grid-row-gap: 2vh;
+  }
+  .Review .review {
+    height: auto;
+  }
+}

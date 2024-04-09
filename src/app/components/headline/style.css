@@ -1,0 +1,58 @@
+.Headline .request img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  margin-bottom: 2vh;
+}
+
+.Headline .request {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+.Headline .request h3 {
+  font-size: 0.5rem;
+}
+.Headline {
+  width: 100%;
+  text-align: center;
+  margin: 10vh 0;
+}
+.Headline h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: -0.5rem 0;
+}
+.Headline .request h3 {
+  font-size: 1.2rem;
+}
+.Headline .socialProfiles {
+  justify-content: center;
+  display: flex;
+  margin: 5vh 0;
+}
+.Headline .socialProfiles li {
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+}
+.Headline .socialProfiles li a {
+  display: flex;
+  align-items: center;
+}
+.Headline .socialProfiles img {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.3rem;
+}
+.Headline .socialProfiles li span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.Headline .request span {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 2vw;
+}
