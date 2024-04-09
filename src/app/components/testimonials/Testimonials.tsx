@@ -1,3 +1,4 @@
+'use client'
 import Headline from '../headline/Headline'
 import Reviews from './Reviews/Reviews'
 

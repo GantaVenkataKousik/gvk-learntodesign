@@ -1,9 +1,15 @@
 import './style.css'
+import React from 'react'
 
-export default function Review ({ username, content }) {
+interface ReviewProps {
+  username: string
+  content: string
+}
+
+const Review: React.FC<ReviewProps> = ({ username, content }) => {
   return (
     <>
-      <div className={`Review `}>
+      <div className='Review'>
         <h2 className='username'>{username}</h2>
         <div className='review'>
           <p>{content}</p>
@@ -15,3 +21,5 @@ export default function Review ({ username, content }) {
     </>
   )
 }
+
+export default Review

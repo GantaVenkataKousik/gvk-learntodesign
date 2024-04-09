@@ -3,7 +3,7 @@ import './style.css'
 export default function StaticReview () {
   return (
     <>
-      <div className={`Review `}>
+      <div className={`StaticReview `}>
         <h2 className='username'>Andrea</h2>
         <div className='review'>
           <p>

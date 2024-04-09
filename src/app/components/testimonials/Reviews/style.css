@@ -71,11 +71,10 @@
   font-weight: bold;
 }
 .userReviews {
-  display: grid;
-  grid-template-columns: repeat(4, 20vw);
-  grid-template-rows: auto;
-  grid-column-gap: 1.5vw;
-  grid-row-gap: 2vh;
-  margin-top: 5vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5vh auto;
   justify-content: center;
+  gap: 2rem;
 }

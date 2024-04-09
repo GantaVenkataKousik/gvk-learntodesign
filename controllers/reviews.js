@@ -1,14 +1,11 @@
 import db from '../utils/connectDB'
-import Reviews from '../models/userReviews'
+import reviewsColl from '../models/userReviews'
 
-async function fetchPosts () {
+export const fetchPosts = async () => {
   try {
-    await db.connect()
-    const posts = await Reviews.find()
-    db.disconnect()
+
     return posts
   } catch (error) {
-    db.disconnect()
     return { error }
   }
 }
@@ -25,6 +22,3 @@ async function createPost (doc) {
     return { error }
   }
 }
-
-const reviews = { fetchPosts, createPost }
-export default reviews

@@ -1,33 +1,68 @@
 import './style.css'
-import Review from './Review/Review'
-import StaticReview from './Review/StaticReview'
-import review from '../../../../../controllers/reviews'
-import { Suspense } from 'react'
 import { useEffect, useState } from 'react'
+import { Suspense } from 'react'
 import React from 'react'
-const UserReviews = React.lazy(() => import('./UserReviews'))
+import dynamic from 'next/dynamic'
+import axios from 'axios'
+
+const UserReviews = dynamic(() => import('./UserReviews'), { ssr: false })
+const StaticReview = dynamic(() => import('./Review/StaticReview'), {
+  ssr: false
+})
+
 export default function Reviews () {
   const [reviews, setReviews] = useState([])
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [review, setReview] = useState('')
+  const fp = async () => {
+    try {
+      const response = await axios.get('http://localhost:9002/fetchPosts')
+      console.log(response)
+      setReviews(response.data)
+    } catch (error) {
+      console.error('Error fetching posts:', error)
+    }
+  }
 
   useEffect(() => {
     // Fetch posts when the component mounts
-    const fetchPosts = async () => {
-      try {
-        const data = await review.fetchPosts()
-        console.log(data)
-        setReviews(data)
-      } catch (error) {
-        console.error('Error fetching posts:', error)
-      }
-    }
 
-    fetchPosts()
+    fp()
 
     // Clean up function to avoid memory leaks
     return () => {
       setReviews([])
     }
   }, [])
+  const addReview = async () => {
+    try {
+      const response = await axios.post('http://localhost:9002/addReview', {
+        name: name,
+        email: email,
+        review: review
+      })
+      console.log(response)
+      setReviews(prevReviews => [...prevReviews, response.data])
+      // Clear input fields after successful addition
+      setName('')
+      setEmail('')
+      setReview('')
+    } catch (error) {
+      console.error('Error fetching posts:', error)
+    }
+  }
+  const handleNameChange = event => {
+    setName(event.target.value)
+  }
+
+  const handleEmailChange = event => {
+    setEmail(event.target.value)
+  }
+
+  const handleReviewChange = event => {
+    setReview(event.target.value)
+  }
   return (
     <>
       <div className='mainSec'>
@@ -38,12 +73,26 @@ export default function Reviews () {
           <StaticReview></StaticReview>
           <StaticReview></StaticReview>
         </div>
-        <form>
+        <form action={addReview}>
           {' '}
           <div className='inputForm'>
-            <input type='text' placeholder='Name'></input>
-            <input type='text' placeholder='Email'></input>
-            <textarea placeholder='Review'></textarea>
+            <input
+              type='text'
+              placeholder='Name'
+              value={name}
+              onChange={handleNameChange}
+            />
+            <input
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={handleEmailChange}
+            />
+            <textarea
+              placeholder='Review'
+              value={review}
+              onChange={handleReviewChange}
+            ></textarea>
             <button>Submit</button>
           </div>
         </form>

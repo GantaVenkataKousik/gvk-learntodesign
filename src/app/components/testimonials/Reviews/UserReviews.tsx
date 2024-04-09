@@ -8,14 +8,16 @@ interface ReviewData {
 }
 
 interface UserReviewsProps {
-  reviews: ReviewData[]
+  reviews: ReviewData[] | null // Allow reviews to be null
 }
+
 const UserReviews: React.FC<UserReviewsProps> = ({ reviews }) => {
   return (
-    <div className='userReviewsContainer'>
-      {reviews.map((review: ReviewData, index: number) => (
-        <Review key={index} username={review.name} content={review.review} />
-      ))}
+    <div className='userReviews'>
+      {reviews &&
+        reviews.map((review: ReviewData, index: number) => (
+          <Review key={index} username={review.name} content={review.review} />
+        ))}
     </div>
   )
 }

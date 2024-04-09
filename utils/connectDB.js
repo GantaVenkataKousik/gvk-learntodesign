@@ -1,20 +1,20 @@
 import mongoose from 'mongoose'
-
+import reviews from '../models/userReviews'
 const connection = {}
 
-async function connect () {
-  if (connection.isConnected) {
-    return
+export const connect = async (req, res) => {
+  try {
+    console.log('Connecting to MongoDB...')
+    await mongoose.connect(
+      'mongodb+srv://GantaVenkataKousik:VKousik330066@cluster0.kslyn8z.mongodb.net/',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      }
+    )
+  } catch (err) {
+    console.log('error connecting to MongoDB:', err)
   }
-  if (mongoose.connections.length > 0) {
-    connection.isConnected = mongoose.connections[0].readyState
-    if (connection.isConnected === 1) {
-      return
-    }
-    await mongoose.disconnect()
-  }
-  const db = await mongoose.connect(process.env.MONGODO_URL)
-  connection.isConnected = db.connections[0].readyState
 }
 
 async function disconnect () {
@@ -34,6 +34,3 @@ function convertDocToObj (doc) {
   doc.updatedAt = doc.updatedAt.toString()
   return doc
 }
-
-const db = { connect, disconnect, convertDocToObj }
-export default db

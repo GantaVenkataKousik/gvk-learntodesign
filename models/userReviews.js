@@ -20,6 +20,4 @@ const reviewSchema = new mongoose.Schema(
   }
 )
 
-const Reviews =
-  mongoose.models.Reviews || mongoose.model('Reviews', reviewSchema)
-export default Reviews
+export default mongoose.model('reviews', reviewSchema)

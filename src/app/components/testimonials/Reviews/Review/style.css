@@ -1,7 +1,37 @@
+.StaticReview {
+  padding: 0.8rem 1.6rem;
+  border-radius: 1.1rem;
+  background: #3a3939;
+}
+
+.StaticReview .username {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+.StaticReview .review {
+  padding: 1.1rem 1.4rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+
+  font-size: 1.2rem;
+  border: 1px solid #fff;
+  line-height: 2.5vh;
+  height: auto;
+}
+.StaticReview h3 {
+  text-align: end;
+}
+.StaticReview .readmore {
+  margin: 0.4vh 0;
+  color: #ecc499;
+}
 .Review {
   padding: 0.8rem 1.6rem;
   border-radius: 1.1rem;
   background: #3a3939;
+  width: 22vw;
+  
 }
 
 .Review .username {
