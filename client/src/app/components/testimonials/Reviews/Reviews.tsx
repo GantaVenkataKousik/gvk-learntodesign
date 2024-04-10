@@ -16,7 +16,7 @@ interface Review {
 }
 
 export default function Reviews () {
-  const [reviews, setReviews] = useState<Review[]>([])
+  const [reviews, setReviews] = useState([])
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [review, setReview] = useState('')
@@ -49,7 +49,7 @@ export default function Reviews () {
       })
       console.log(response)
 
-      setReviews((prevReviews: Review[]) => [...prevReviews, response.data])
+      setReviews((prevReviews: Review) => [...prevReviews, response.data])
       // Clear input fields after successful addition
       setName('')
       setEmail('')
