@@ -9,7 +9,10 @@ const UserReviews = dynamic(() => import('./UserReviews'), { ssr: false })
 const StaticReview = dynamic(() => import('./Review/StaticReview'), {
   ssr: false
 })
-
+interface Review {
+  name: string
+  review: string
+}
 export default function Reviews () {
   const [reviews, setReviews] = useState([])
   const [name, setName] = useState('')
@@ -43,7 +46,8 @@ export default function Reviews () {
         review: review
       })
       console.log(response)
-      setReviews(prevReviews => [...prevReviews, response.data])
+
+      setReviews((prevReviews: Review[]) => [...prevReviews, response.data])
       // Clear input fields after successful addition
       setName('')
       setEmail('')
