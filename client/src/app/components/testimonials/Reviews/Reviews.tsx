@@ -49,7 +49,7 @@ export default function Reviews () {
       })
       console.log(response)
 
-      setReviews((prevReviews: Review) => [...prevReviews, response.data])
+      setReviews(prevReviews => [...prevReviews, response.data] as Review[])
       // Clear input fields after successful addition
       setName('')
       setEmail('')
